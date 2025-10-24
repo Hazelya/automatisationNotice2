@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice XPLORE II</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            font-size: 12pt;
+            line-height: 1.2;
+            margin: 40px;
+            color: black;
+        }
+
+        .header {
+            margin-bottom: 30px;
+            text-align: right;
+        }
+
+        .header > div {
+            margin-bottom: 2px;
+        }
+
+        .date-location {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .subject {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .fund-details {
+            margin-top: 40px;
+        }
+
+        .fund-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 2px solid black;
+        }
+
+        td {
+            padding: 5px;
+            vertical-align: top;
+            border-style: none; /* Supprime les bordures */
+        }
+
+
+        .section-header {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .amount-highlight {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .payment-details {
+            margin-top: 30px;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .operation-value{
+            text-align: right;
+        }
+
+        .fund-secondary-title, .fund-title {
+            text-align: center;
+        }
+
+        .fund-secondary-title {
+            padding-bottom: 30px;
+        }
+
+        .saut-page {
+            padding-bottom: 500px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div><strong>{{ souscripteur }} {{ pm_pp }}</strong></div>
+        <div></div>
+        <div>{{ representant }}</div>
+        <div></div>
+        <div>{{ adresse }}</div>
+        <div></div>
+        <div>{{ code_postal }} {{ ville }}</div>
+        <div></div>
+        <div>{{ pays }}</div>
+    </div>
+
+    <div class="date-location">
+        <div>Guipavas, le {{ date }},</div>
+    </div>
+
+    <div class="subject">
+        <span class="underline">Objet</span> : XPLORE II (FPCI) - Appel de Fonds N°{{ numero_call }} - Date valeur : {{ date_call }}
+    </div>
+
+    <div class="content">
+        <p>Cher Investisseur,</p>
+
+        <p>Dans le cadre de votre souscription dans le {{ nom_fond }}, nous vous informons de l'Appel de Fonds N°{{ numero_call }}, en date valeur du {{ date_call }}, pour un montant total de {{ montant_total }} € (soit {{ pourcentage_call }} % du Montant Total des Souscriptions), soit pour votre quote-part un montant total de <strong>{{ montant_a_liberer }} €</strong>.</p>
+
+        <p>L'Appel de Fonds précédent avait porté votre engagement appelé à {{ pourcentage_avant_call }} du montant total auquel vous aviez souscrit. {{ texte_fond_couvrir }} A ce jour, les montants libérés lors de la souscription initiale et des précédents appels ont été investis, dépensés ou engagés à 100 %.</p>
+
+        <p>Ainsi, conformément à l'article 9.2.2 du Règlement du Fonds, nous vous remercions de bien vouloir procéder au versement de la somme mentionnée selon les modalités indiquées dans la page suivante.</p>
+
+        <p>{{ texte_fond_finance }}</p>
+
+        <p>Nous vous remercions par avance et vous prions de croire, Cher Investisseur, en l'expression de notre considération distinguée.</p>
+    </div>
+
+    <div class="signature">
+        <div><strong>L'équipe Middle Office</strong></div>
+        <div></div>
+        <div><strong>Épopée Gestion</strong></div>
+    </div>
+
+    <div class="saut-page">
+
+    </div>
+
+    <div class="fund-details">
+        <h3 class="fund-title">
+            <strong>{{ nom_fond }}</strong>
+        </h3>
+
+        <div class="fund-secondary-title">Appel de Fonds N°{{ numero_call }}</div>
+
+        <table>
+            <tr>
+                <td class="section-header"><span class="underline">Détail de l'opération :</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>% de l'Appel de Fonds</td>
+                <td style="text-align: right">{{ pourcentage_call }} %</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="amount-highlight"><strong>Montant à libérer :</strong></td>
+                <td class="amount-highlight"><strong>{{ montant_a_liberer }} €</strong></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="amount-highlight"><strong>Date d'opération et de valeur, <span class="underline">au plus tard le</span> :</strong></td>
+                <td class="amount-highlight"><strong>{{ date_call }}</strong></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td class="section-header"><span class="underline">Situation après cette opération :</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Montant de l'engagement initial</td>
+                <td class="operation-value">{{ montant_engagement_initial }} €</td>
+            </tr>
+            <tr>
+                <td>Nombre de Parts {{ categorie_part }} souscrites</td>
+                <td class="operation-value">{{ nombre_parts_souscrites }}</td>
+            </tr>
+            <tr>
+                <td>Capital appelé à date*</td>
+                <td class="operation-value">{{ total_appele }} €</td>
+            </tr>
+            <tr>
+                <td>% de l'engagement appelé à date*</td>
+                <td class="operation-value">{{ pourcent_liberation }} %</td>
+            </tr>
+            <tr>
+                <td>Montant restant à appeler*</td>
+                <td class="operation-value">{{ residuel }} €</td>
+            </tr>
+        </table>
+
+        <p><em>*Incluant l'Appel de Fonds en cours</em></p>
+
+        <p>Veuillez procéder au paiement en €, <strong>net de tous frais bancaires</strong>, par virement bancaire sur le compte, selon les instructions suivantes :</p>
+
+        <table class="payment-table">
+            <tr>
+                <td colspan="2" class="section-header"><span class="underline">Détail du paiement :</span></td>
+            </tr>
+            <tr>
+                <td>Titulaire du compte</td>
+                <td><strong>XPLORE II</strong></td>
+            </tr>
+            <tr>
+                <td>Domiciliation</td>
+                <td><strong>CACEIS BANK FRANCE</strong></td>
+            </tr>
+            <tr>
+                <td>IBAN</td>
+                <td>FR76 1812 9000 1000 5002 0849 481</td>
+            </tr>
+            <tr>
+                <td>BIC (ADRESSE SWIFT)</td>
+                <td>ISAEFRPPXXX</td>
+            </tr>
+            <tr>
+                <td>Libellé du virement</td>
+                <td>{{ libelle_virement }}</td>
+            </tr>
+            <tr>
+                <td>Frais pour le bénéficiaire</td>
+                <td>N/A (SHA)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="signature">
+        <div><strong>L'équipe Middle Office</strong></div>
+        <div></div>
+        <div><strong>Épopée Gestion</strong></div>
+    </div>
+</body>
+</html>
