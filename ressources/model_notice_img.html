@@ -125,6 +125,22 @@
         .saut-page {
             padding-bottom: 300px;
         }
+        
+        /* Style pour pied de page */
+
+        .pied-de-page {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .pied-de-page img {
+            width: 100%; /* ou fixe : 180mm */
+            height: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -169,7 +185,9 @@
     </div>
 
     <footer>
-        <img src="images/pied-de-page-2025.png" alt="Logo Épopée Gestion" style="padding-top: 100px;">
+        <div class="pied-de-page">
+            <img src="images/pied-de-page-2025.png" alt="Logo Épopée Gestion">
+        </div>
     </footer>
 
     <div class="saut-page"></div> <!-------------------------------------------------------------------------------->
@@ -259,7 +277,9 @@
     </div>
 
     <footer>
-        <img src="images/pied-de-page-2025.png" alt="Logo Épopée Gestion" style="padding-top: 100px;">
+        <div class="pied-de-page">
+            <img src="images/pied-de-page-2025.png" alt="Logo Épopée Gestion">
+        </div>
     </footer>
 
 </body>
