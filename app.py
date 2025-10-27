@@ -7,7 +7,7 @@ import os
 import datetime as dt
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
-from bs4 import BeautifulSoup
+
 
 
 # === Fonctions utiles ===
@@ -118,16 +118,6 @@ if st.button("Générer les notices"):
 
                 HTML(filename=fichier_html, base_url=base_url.as_uri()).write_pdf(fichier_pdf)
 
-                # Génération DOCX
-                fichier_word = f'Output/Word/{df_nettoye["SOUSCRIPTEUR"][i]}_{df_nettoye["PART"][i]}.docx'
-
-                # Exemple simple pour le docx : on extrait le texte brut du HTML (tu peux adapter)
-                soup = BeautifulSoup(html_content, 'html.parser')
-                texte = soup.get_text(separator='\n').strip()
-
-                document = Document()
-                document.add_paragraph(texte)
-                document.save(fichier_word)
 
             # Zip tous les fichiers
             shutil.make_archive("notices", "zip", "Output")
