@@ -7,7 +7,6 @@ import os
 import datetime as dt
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
-from docx import Document
 from bs4 import BeautifulSoup
 
 
