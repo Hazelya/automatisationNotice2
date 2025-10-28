@@ -32,6 +32,7 @@ texte_fond_finance = st.text_area("Texte pour financer le nouvel appel")
 
 numero_call = st.text_input("Numéro de l'appel", value="9")
 date_call = st.text_input("Date du CALL", value="17/11/2025")
+date_call = dt.strptime(date_call, "%d/%m/%Y")
 pourcentage_call = st.text_input("Pourcentage du CALL", value="10,50%")
 nom_fond = st.text_input("Nom du fonds", value="FPCI ÉPOPÉE Xplore II")
 pays = st.text_input("Pays", value="France")
