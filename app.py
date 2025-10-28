@@ -41,7 +41,7 @@ if st.button("Générer les notices"):
             f.write(uploaded_file.getbuffer())
 
         try:
-            df = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=18) # Header a modifier si besoin
+            df = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=2) # Header a modifier si besoin
             df_nettoye = df[df['SOUSCRIPTEUR'].notna()]
             df_nettoye = df_nettoye[~df_nettoye['SOUSCRIPTEUR'].str.startswith('TOTAL', na=False)]
             df_nettoye = df_nettoye.reset_index(drop=True)
