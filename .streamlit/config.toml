@@ -1,0 +1,5 @@
+[global]
+disableTelemetry = true     # Désactive l'envoi de données à Streamlit
+
+[browser]
+gatherUsageStats = false    # Désactive la collecte d'utilisation du navigateur
