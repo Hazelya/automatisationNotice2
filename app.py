@@ -60,6 +60,10 @@ if st.button("Générer les notices"):
             env = Environment(loader=FileSystemLoader(dir))
             template = env.get_template('model_notice_img.html')
 
+            for folder in ["Output", "Output_HTML"]:
+                if os.path.exists(folder):
+                    shutil.rmtree(folder)
+
             os.makedirs('Output', exist_ok=True)
             os.makedirs('Output_HTML', exist_ok=True)
 
@@ -105,9 +109,6 @@ if st.button("Générer les notices"):
                 # Rend le HTML final avec tes vraies données
                 html_content = template.render(data)
 
-                for folder in ["Output", "Output_HTML"]:
-                    if os.path.exists(folder):
-                        shutil.rmtree(folder)
 
                 # Sauve le résultat dans un fichier
                 os.makedirs('Output_HTML', exist_ok=True)
