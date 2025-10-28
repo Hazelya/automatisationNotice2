@@ -79,7 +79,7 @@ if st.button("Générer les notices"):
                     'pm_pp': df_nettoye["TYPE"][i],
                     'representant': representant,
                     'adresse': df_nettoye["ADRESSE"][i],
-                    'code_postal': round(df_nettoye["CP"][i]),
+                    'code_postal': str(df_nettoye["CP"][i]),
                     'ville': df_nettoye["VILLE"][i],
                     'pays': pays,
                     'date': date_now(),
