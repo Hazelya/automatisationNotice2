@@ -25,10 +25,14 @@ def format_nombre(nombre):
 st.title("Générateur de notices d'appel de fonds")
 
 uploaded_file = st.file_uploader("Fichier Excel de données", type=["xlsx"])
+header = st.text_input("Première ligne (header)", value="3")
+header = int(header) - 1
 texte_fond_couvrir = st.text_area("Texte pour couvrir l'appel")
 texte_fond_finance = st.text_area("Texte pour financer le nouvel appel")
 
 numero_call = st.text_input("Numéro de l'appel", value="9")
+date_call = st.text_input("Date du CALL", value="17/11/2025")
+pourcentage_call = st.text_input("Pourcentage du CALL", value="10,50%")
 nom_fond = st.text_input("Nom du fonds", value="FPCI ÉPOPÉE Xplore II")
 pays = st.text_input("Pays", value="France")
 
@@ -41,7 +45,7 @@ if st.button("Générer les notices"):
             f.write(uploaded_file.getbuffer())
 
         try:
-            df = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=2) # Header a modifier si besoin
+            df = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=header) # Header a modifier si besoin
             df_nettoye = df[df['SOUSCRIPTEUR'].notna()]
             df_nettoye = df_nettoye[~df_nettoye['SOUSCRIPTEUR'].str.startswith('TOTAL', na=False)]
             df_nettoye = df_nettoye.reset_index(drop=True)
@@ -49,8 +53,8 @@ if st.button("Générer les notices"):
             df_CALL = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=3)
             call = 'CALL #' + numero_call
             montant_total = df[call][df.shape[0]-6]
-            date_call = df_CALL.loc[df_CALL['Nominal'] == call, 'Date'].iloc[0]
-            pourcentage_call = df_CALL.loc[df_CALL['Nominal'] == call, df_CALL.columns[2]].iloc[0]
+            #date_call = df_CALL.loc[df_CALL['Nominal'] == call, 'Date'].iloc[0]
+            #pourcentage_call = df_CALL.loc[df_CALL['Nominal'] == call, df_CALL.columns[2]].iloc[0]
 
             dir = 'ressources'
             env = Environment(loader=FileSystemLoader(dir))
@@ -83,7 +87,8 @@ if st.button("Générer les notices"):
                     'date_call': date_call.strftime('%d/%m/%Y'),
                     'nom_fond': nom_fond,
                     'montant_total': format_nombre(montant_total),
-                    'pourcentage_call': f"{pourcentage_call * 100:.2f}",
+                    # 'pourcentage_call': f"{pourcentage_call * 100:.2f}",
+                    'pourcentage_call': pourcentage_call,
                     'montant_a_liberer': format_nombre(df_nettoye[call][i]),
                     'pourcentage_avant_call': format_nombre(pourcentage_avant_call),
                     'texte_fond_couvrir': texte_fond_couvrir,
