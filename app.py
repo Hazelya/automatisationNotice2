@@ -27,8 +27,8 @@ st.title("Générateur de notices d'appel de fonds")
 uploaded_file = st.file_uploader("Fichier Excel de données", type=["xlsx"])
 header = st.text_input("Première ligne (header)", value="3")
 header = int(header) - 1
-texte_fond_couvrir = st.text_area("Texte pour couvrir l'appel")
-texte_fond_finance = st.text_area("Texte pour financer le nouvel appel")
+# texte_fond_couvrir = st.text_area("Texte pour couvrir l'appel")
+texte_fond_finance = st.text_area("Texte")
 
 numero_call = st.text_input("Numéro de l'appel", value="9")
 date_call = st.text_input("Date du CALL", value="17/11/2025")
@@ -50,7 +50,7 @@ if st.button("Générer les notices"):
             df_nettoye = df_nettoye[~df_nettoye['SOUSCRIPTEUR'].str.startswith('TOTAL', na=False)]
             df_nettoye = df_nettoye.reset_index(drop=True)
 
-            df_CALL = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=3)
+            df_CALL = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=3) # ne sert plus
             call = 'CALL #' + numero_call
             montant_total = df[call][df.shape[0]-6]
             #date_call = df_CALL.loc[df_CALL['Nominal'] == call, 'Date'].iloc[0]
@@ -80,7 +80,7 @@ if st.button("Générer les notices"):
                 # 'balise' : 'la donnée',
                 data = {
                     'souscripteur': df_nettoye["SOUSCRIPTEUR"][i],
-                    'pm_pp': df_nettoye["TYPE"][i],
+                    # 'pm_pp': df_nettoye["TYPE"][i],
                     'representant': representant,
                     'adresse': df_nettoye["ADRESSE"][i],
                     'code_postal': str(df_nettoye["CP"][i]),
@@ -95,7 +95,7 @@ if st.button("Générer les notices"):
                     'pourcentage_call': pourcentage_call,
                     'montant_a_liberer': format_nombre(df_nettoye[call][i]),
                     'pourcentage_avant_call': format_nombre(pourcentage_avant_call),
-                    'texte_fond_couvrir': texte_fond_couvrir,
+                    # 'texte_fond_couvrir': texte_fond_couvrir,
                     'texte_fond_finance': texte_fond_finance,
                     'montant_engagement_initial': format_nombre(df_nettoye["ENGAGEMENT"][i]),
                     'nombre_parts_souscrites': format_nombre(df_nettoye["NBR PARTS"][i]),
