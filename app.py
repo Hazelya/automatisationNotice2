@@ -31,8 +31,13 @@ header = int(header) - 1
 texte_fond_finance = st.text_area("Texte")
 
 numero_call = st.text_input("Numéro de l'appel", value="9")
+
+date = st.text_input("Date d'envoie", value="30/11/2025")
+date_obj = dt.datetime.strptime(date, "%d/%m/%Y")
+
 date_call = st.text_input("Date du CALL", value="17/11/2025")
-pourcentage_call = st.text_input("Pourcentage du CALL", value="10,50%")
+pourcentage_call = st.text_input("Pourcentage du CALL", value="10,50")
+pourcentage_avant_call = st.text_input("Pourcentage du pré CALL", value="87,00")
 nom_fond = st.text_input("Nom du fonds", value="FPCI ÉPOPÉE Xplore II")
 pays = st.text_input("Pays", value="France")
 
@@ -50,7 +55,13 @@ if st.button("Générer les notices"):
             df_nettoye = df_nettoye[~df_nettoye['SOUSCRIPTEUR'].str.startswith('TOTAL', na=False)]
             df_nettoye = df_nettoye.reset_index(drop=True)
 
-            df_CALL = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=3) # ne sert plus
+            df_temp = pd.read_excel("fichier.xlsx", header=None)
+
+            # Récupérer les deux premières cellules
+            iban = df_temp.iloc[0, 1]  # B1
+            bic = df_temp.iloc[1, 1]  # B2
+
+            # df_CALL = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=3) # ne sert plus
             call = 'CALL #' + numero_call
             montant_total = df[call][df.shape[0]-6]
             #date_call = df_CALL.loc[df_CALL['Nominal'] == call, 'Date'].iloc[0]
@@ -68,8 +79,8 @@ if st.button("Générer les notices"):
             os.makedirs('Output_HTML', exist_ok=True)
 
             for i in range(df_nettoye.shape[0]):
-                total_avant_call = df_nettoye['TOTAL APPELE'][i] - df_nettoye[call][i]
-                pourcentage_avant_call = (total_avant_call / df_nettoye['ENGAGEMENT'][i]) * 100
+                # total_avant_call = df_nettoye['TOTAL APPELE'][i] - df_nettoye[call][i]
+                # pourcentage_avant_call = (total_avant_call / df_nettoye['ENGAGEMENT'][i]) * 100
 
                 if pd.isna(df_nettoye["Représentant"][i]):
                     representant = ''
@@ -86,7 +97,7 @@ if st.button("Générer les notices"):
                     'code_postal': str(df_nettoye["CP"][i]),
                     'ville': df_nettoye["VILLE"][i],
                     'pays': pays,
-                    'date': date_now(),
+                    'date': date_obj.strftime("%d %B %Y"),
                     'numero_call': numero_call,
                     'date_call': date_call,
                     'nom_fond': nom_fond,
@@ -103,7 +114,9 @@ if st.button("Générer les notices"):
                     'total_appele': format_nombre(df_nettoye["TOTAL APPELE"][i]),
                     'pourcent_liberation': f"{df_nettoye['%LIBERATION'][i] * 100:.2f}",
                     'residuel': format_nombre(df_nettoye["RESIDUEL"][i]),
-                    'libelle_virement': 'CR ' + df_nettoye["SOUSCRIPTEUR"][i] + ' ADF ' + numero_call
+                    'libelle_virement': 'CR ' + df_nettoye["SOUSCRIPTEUR"][i] + ' ADF ' + numero_call,
+                    'iban': iban,
+                    'bic': bic,
                 }
 
                 # Rend le HTML final avec tes vraies données
@@ -121,8 +134,11 @@ if st.button("Générer les notices"):
                 os.makedirs('Output/PDF', exist_ok=True)
                 os.makedirs('Output/Word', exist_ok=True)
 
-                fichier_html = 'Output_HTML/' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.html'
-                fichier_pdf = 'Output/PDF/' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.pdf'
+                date_call_obj = dt.strptime(date_call, "%d/%m/%Y")
+                date_title = date_obj.strftime("%Y%m%d")
+
+                fichier_html = 'Output_HTML/' + str(date_title) + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
+                fichier_pdf = 'Output/PDF/' + str(date_title) + df_nettoye["SOUSCRIPTEUR"][i] + '.pdf'
 
                 base_url = Path('ressources/images').resolve()  # Chemin absolu vers /ressources
 

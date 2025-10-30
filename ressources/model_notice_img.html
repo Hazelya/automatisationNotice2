@@ -8,8 +8,12 @@
         @page {
             margin: 0; /* supprime les marges automatiques */
         }
+        @font-face {
+            font-family: "MaPolice"; 
+            src: url("./fonts/SourceSansPro-Regular.otf") format("opentype");
+        }
         body {
-            font-family: "Times New Roman", serif;
+            font-family: "MaPolice", sans-serif;
             font-size: 10pt;
             line-height: 1.2;
             margin: 0px;
@@ -20,7 +24,7 @@
         header img{
             width: 13rem;
             text-align: left;
-            padding-left: 13mm;
+            padding-left: 10mm;
         }
 
         footer img{
@@ -78,7 +82,6 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
             border: 2px solid black;
         }
 
@@ -178,7 +181,7 @@
         <p></p>
         <p>Cher Investisseur,</p>
         <p>Dans le cadre de votre souscription dans le {{ nom_fond }}, nous vous informons de l'Appel de Fonds N°{{ numero_call }}, en date valeur du {{ date_call }}, pour un montant total de {{ montant_total }} € (soit {{ pourcentage_call }} % du Montant Total des Souscriptions), soit pour votre quote-part un montant total de <strong>{{ montant_a_liberer }} €</strong>.</p>
-        <p>L'Appel de Fonds précédent avait porté votre engagement appelé à {{ pourcentage_avant_call }} du montant total auquel vous aviez souscrit. A ce jour, les montants libérés lors de la souscription initiale et des précédents appels ont été investis, dépensés ou engagés à 100 %.</p>
+        <p>L'Appel de Fonds précédent avait porté votre engagement appelé à {{ pourcentage_avant_call }}% du montant total auquel vous aviez souscrit. A ce jour, les montants libérés lors de la souscription initiale et des précédents appels ont été investis, dépensés ou engagés à 100 %.</p>
         <p>{{ texte_fond_finance }}</p>
         <p>Ainsi, conformément à l'article 9.2.2 du Règlement du Fonds, nous vous remercions de bien vouloir procéder au versement de la somme mentionnée selon les modalités indiquées dans la page suivante.</p>
         <p>Nous vous remercions par avance et vous prions de croire, Cher Investisseur, en l'expression de notre considération distinguée.</p>
@@ -273,10 +276,10 @@
             <tr>
                 <td colspan="2" class="section-header"><span class="underline">Détail du paiement :</span></td>
             </tr>
-            <tr><td>Titulaire du compte</td><td><strong>XPLORE II</strong></td></tr>
+            <tr><td>Titulaire du compte</td><td><strong>{{ nom_fond }}</strong></td></tr>
             <tr><td>Domiciliation</td><td><strong>CACEIS BANK FRANCE</strong></td></tr>
-            <tr><td>IBAN</td><td>FR76 1812 9000 1000 5002 0849 481</td></tr>
-            <tr><td>BIC (ADRESSE SWIFT)</td><td>ISAEFRPPXXX</td></tr>
+            <tr><td>IBAN</td><td>{{ iban }}</td></tr>
+            <tr><td>BIC (ADRESSE SWIFT)</td><td>{{ bic }}</td></tr>
             <tr><td>Libellé du virement</td><td>{{ libelle_virement }}</td></tr>
             <tr><td>Frais pour le bénéficiaire</td><td>N/A (SHA)</td></tr>
         </table>
