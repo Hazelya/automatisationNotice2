@@ -7,6 +7,7 @@ import os
 import datetime as dt
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
+import locale
 
 
 
@@ -50,6 +51,7 @@ if st.button("Générer les notices"):
             f.write(uploaded_file.getbuffer())
 
         try:
+            locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
             df = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=header) # Header a modifier si besoin
             df_nettoye = df[df['SOUSCRIPTEUR'].notna()]
             df_nettoye = df_nettoye[~df_nettoye['SOUSCRIPTEUR'].str.startswith('TOTAL', na=False)]
