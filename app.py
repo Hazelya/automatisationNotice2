@@ -134,7 +134,7 @@ if st.button("Générer les notices"):
                 os.makedirs('Output/PDF', exist_ok=True)
                 os.makedirs('Output/Word', exist_ok=True)
 
-                date_call_obj = dt.strptime(date_call, "%d/%m/%Y")
+                date_call_obj = dt.datetime.strptime(date_call, "%d/%m/%Y")
                 date_title = date_obj.strftime("%Y%m%d")
 
                 fichier_html = 'Output_HTML/' + str(date_title) + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
