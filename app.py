@@ -7,7 +7,7 @@ import os
 import datetime as dt
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
-import locale
+
 
 
 
@@ -35,6 +35,11 @@ numero_call = st.text_input("Numéro de l'appel", value="9")
 
 date = st.text_input("Date d'envoie", value="30/11/2025")
 date_obj = dt.datetime.strptime(date, "%d/%m/%Y")
+mois_fr = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+]
+date_str_fr = f"{date_obj.day} {mois_fr[date_obj.month - 1]} {date_obj.year}"
 
 date_call = st.text_input("Date du CALL", value="17/11/2025")
 pourcentage_call = st.text_input("Pourcentage du CALL", value="10,50")
@@ -51,7 +56,6 @@ if st.button("Générer les notices"):
             f.write(uploaded_file.getbuffer())
 
         try:
-            locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
             df = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=header) # Header a modifier si besoin
             df_nettoye = df[df['SOUSCRIPTEUR'].notna()]
             df_nettoye = df_nettoye[~df_nettoye['SOUSCRIPTEUR'].str.startswith('TOTAL', na=False)]
@@ -99,7 +103,7 @@ if st.button("Générer les notices"):
                     'code_postal': str(df_nettoye["CP"][i]),
                     'ville': df_nettoye["VILLE"][i],
                     'pays': pays,
-                    'date': str(date_obj.strftime("%d %B %Y")),
+                    'date': date_str_fr,
                     'numero_call': numero_call,
                     'date_call': date_call,
                     'nom_fond': nom_fond,
