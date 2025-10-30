@@ -178,6 +178,10 @@
             padding-right: 12px;
         }
 
+        .finTable{
+            padding-bottom: 12px;
+        }
+
     </style>
 </head>
 <body>
@@ -259,9 +263,9 @@
                 <td class="amount-highlight"><strong>{{ montant_a_liberer }} €</strong></td>
                 <td></td>
             </tr>
-            <tr>
-                <td class="amount-highlight" style="margin-bottom: 10px;"><strong>Date d'opération et de valeur, <span class="underline">au plus tard le</span> :</strong></td>
-                <td class="amount-highlight" style="margin-bottom: 10px;"><strong>{{ date_call }}</strong></td>
+            <tr class="finTable">
+                <td class="amount-highlight"><strong>Date d'opération et de valeur, <span class="underline">au plus tard le</span> :</strong></td>
+                <td class="amount-highlight"><strong>{{ date_call }}</strong></td>
                 <td></td>
             </tr>
         </table>
