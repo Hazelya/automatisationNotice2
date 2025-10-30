@@ -125,7 +125,7 @@ if st.button("Générer les notices"):
 
                 # Sauve le résultat dans un fichier
                 os.makedirs('Output_HTML', exist_ok=True)
-                dir_nom_fichier = 'Output_HTML/' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.html'
+                dir_nom_fichier = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
                 with open(dir_nom_fichier, 'w', encoding='utf-8') as file:
                     file.write(html_content)
 
@@ -137,8 +137,8 @@ if st.button("Générer les notices"):
                 date_call_obj = dt.datetime.strptime(date_call, "%d/%m/%Y")
                 date_title = date_obj.strftime("%Y%m%d")
 
-                fichier_html = 'Output_HTML/' + str(date_title) + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
-                fichier_pdf = 'Output/PDF/' + str(date_title) + df_nettoye["SOUSCRIPTEUR"][i] + '.pdf'
+                fichier_html = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
+                fichier_pdf = 'Output/PDF/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.pdf'
 
                 base_url = Path('ressources/images').resolve()  # Chemin absolu vers /ressources
 
