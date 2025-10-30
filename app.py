@@ -123,6 +123,10 @@ if st.button("Générer les notices"):
                 html_content = template.render(data)
 
 
+                date_call_obj = dt.datetime.strptime(date_call, "%d/%m/%Y")
+                date_title = date_obj.strftime("%Y%m%d")
+
+
                 # Sauve le résultat dans un fichier
                 os.makedirs('Output_HTML', exist_ok=True)
                 dir_nom_fichier = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
@@ -133,9 +137,6 @@ if st.button("Générer les notices"):
 
                 os.makedirs('Output/PDF', exist_ok=True)
                 os.makedirs('Output/Word', exist_ok=True)
-
-                date_call_obj = dt.datetime.strptime(date_call, "%d/%m/%Y")
-                date_title = date_obj.strftime("%Y%m%d")
 
                 fichier_html = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
                 fichier_pdf = 'Output/PDF/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.pdf'
