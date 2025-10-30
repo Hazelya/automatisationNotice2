@@ -137,8 +137,8 @@ if st.button("Générer les notices"):
                 date_call_obj = dt.strptime(date_call, "%d/%m/%Y")
                 date_title = date_obj.strftime("%Y%m%d")
 
-                fichier_html = 'Output_HTML/' + str(date_title) + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
-                fichier_pdf = 'Output/PDF/' + str(date_title) + df_nettoye["SOUSCRIPTEUR"][i] + '.pdf'
+                fichier_html = 'Output_HTML/' + date_title + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
+                fichier_pdf = 'Output/PDF/' + date_title + df_nettoye["SOUSCRIPTEUR"][i] + '.pdf'
 
                 base_url = Path('ressources/images').resolve()  # Chemin absolu vers /ressources
 
