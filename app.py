@@ -129,7 +129,7 @@ if st.button("Générer les notices"):
 
                 # Sauve le résultat dans un fichier
                 os.makedirs('Output_HTML', exist_ok=True)
-                dir_nom_fichier = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
+                dir_nom_fichier = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.html'
                 with open(dir_nom_fichier, 'w', encoding='utf-8') as file:
                     file.write(html_content)
 
@@ -138,8 +138,8 @@ if st.button("Générer les notices"):
                 os.makedirs('Output/PDF', exist_ok=True)
                 os.makedirs('Output/Word', exist_ok=True)
 
-                fichier_html = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.html'
-                fichier_pdf = 'Output/PDF/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '.pdf'
+                fichier_html = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.html'
+                fichier_pdf = 'Output/PDF/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + + '_' + df_nettoye["PART"][i] + '.pdf'
 
                 base_url = Path('ressources/images').resolve()  # Chemin absolu vers /ressources
 

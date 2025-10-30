@@ -8,9 +8,28 @@
         @page {
             margin: 0; /* supprime les marges automatiques */
         }
+        /* Police normale */
         @font-face {
-            font-family: "MaPolice"; 
+            font-family: "MaPolice";
             src: url("./fonts/SourceSansPro-Regular.otf") format("opentype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Gras */
+        @font-face {
+            font-family: "MaPolice";
+            src: url("./fonts/SourceSansPro-Bold.otf") format("opentype");
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* Italique */
+        @font-face {
+            font-family: "MaPolice";
+            src: url("./fonts/SourceSansPro-It.otf") format("opentype");
+            font-weight: normal;
+            font-style: italic;
         }
         body {
             font-family: "MaPolice", sans-serif;
@@ -85,6 +104,10 @@
             border: 2px solid black;
         }
 
+        .table1 {
+            margin-bottom: 20px;
+        }
+
         td {
             padding: 2px;
             vertical-align: top;
@@ -151,6 +174,10 @@
             padding: 5mm 18mm; /* marge pour le texte */
         }
 
+        .operation-value {
+            padding-right: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -181,7 +208,7 @@
         <p></p>
         <p>Cher Investisseur,</p>
         <p>Dans le cadre de votre souscription dans le {{ nom_fond }}, nous vous informons de l'Appel de Fonds N°{{ numero_call }}, en date valeur du {{ date_call }}, pour un montant total de {{ montant_total }} € (soit {{ pourcentage_call }} % du Montant Total des Souscriptions), soit pour votre quote-part un montant total de <strong>{{ montant_a_liberer }} €</strong>.</p>
-        <p>L'Appel de Fonds précédent avait porté votre engagement appelé à {{ pourcentage_avant_call }}% du montant total auquel vous aviez souscrit. A ce jour, les montants libérés lors de la souscription initiale et des précédents appels ont été investis, dépensés ou engagés à 100 %.</p>
+        <p>L'Appel de Fonds précédent avait porté votre engagement appelé à {{ pourcentage_avant_call }} % du montant total auquel vous aviez souscrit. A ce jour, les montants libérés lors de la souscription initiale et des précédents appels ont été investis, dépensés ou engagés à 100 %.</p>
         <p>{{ texte_fond_finance }}</p>
         <p>Ainsi, conformément à l'article 9.2.2 du Règlement du Fonds, nous vous remercions de bien vouloir procéder au versement de la somme mentionnée selon les modalités indiquées dans la page suivante.</p>
         <p>Nous vous remercions par avance et vous prions de croire, Cher Investisseur, en l'expression de notre considération distinguée.</p>
@@ -213,7 +240,7 @@
         <h3 class="fund-title"><strong>{{ nom_fond }}</strong></h3>
         <div class="fund-secondary-title">Appel de Fonds N°{{ numero_call }}</div>
 
-        <table>
+        <table class="table1">
             <tr>
                 <td class="section-header"><span class="underline">Détail de l'opération :</span></td>
                 <td></td>
@@ -239,7 +266,7 @@
             </tr>
         </table>
 
-        <table>
+        <table class="table2">
             <tr>
                 <td class="section-header"><span class="underline">Situation après cette opération :</span></td>
                 <td></td>
@@ -266,7 +293,7 @@
             </tr>
         </table>
 
-        <p><em>*Incluant l'Appel de Fonds en cours</em></p>
+        <p style="margin: 0;"><em>*Incluant l'Appel de Fonds en cours</em></p>
 
         <p></p>
 
