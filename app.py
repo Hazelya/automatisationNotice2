@@ -139,7 +139,7 @@ if st.button("Générer les notices"):
                 os.makedirs('Output/Word', exist_ok=True)
 
                 fichier_html = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.html'
-                fichier_pdf = 'Output/PDF/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + + '_' + df_nettoye["PART"][i] + '.pdf'
+                fichier_pdf = 'Output/PDF/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.pdf'
 
                 base_url = Path('ressources/images').resolve()  # Chemin absolu vers /ressources
 
