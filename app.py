@@ -105,7 +105,7 @@ if st.button("Générer les notices"):
                     # 'pourcentage_call': f"{pourcentage_call * 100:.2f}",
                     'pourcentage_call': pourcentage_call,
                     'montant_a_liberer': format_nombre(df_nettoye[call][i]),
-                    'pourcentage_avant_call': format_nombre(pourcentage_avant_call),
+                    'pourcentage_avant_call': pourcentage_avant_call,
                     # 'texte_fond_couvrir': texte_fond_couvrir,
                     'texte_fond_finance': texte_fond_finance,
                     'montant_engagement_initial': format_nombre(df_nettoye["ENGAGEMENT"][i]),
