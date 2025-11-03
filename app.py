@@ -44,6 +44,7 @@ date_str_fr = f"{date_obj.day} {mois_fr[date_obj.month - 1]} {date_obj.year}"
 date_call = st.text_input("Date du CALL", value="17/11/2025")
 pourcentage_call = st.text_input("Pourcentage du CALL", value="10,50")
 pourcentage_avant_call = st.text_input("Pourcentage du pré CALL", value="87,00")
+total_appele = st.text_input("Total appele", value="1500,00")
 nom_fond = st.text_input("Nom du fonds", value="FPCI ÉPOPÉE Xplore II")
 pays = st.text_input("Pays", value="France")
 
@@ -117,7 +118,8 @@ if st.button("Générer les notices"):
                     'montant_engagement_initial': format_nombre(df_nettoye["ENGAGEMENT"][i]),
                     'nombre_parts_souscrites': format_nombre(df_nettoye["NBR PARTS"][i]),
                     'categorie_part': df_nettoye["PART"][i],
-                    'total_appele': format_nombre(df_nettoye["TOTAL APPELE"][i]),
+                    # 'total_appele': format_nombre(df_nettoye["TOTAL APPELE"][i]),
+                    'total_appele': total_appele,
                     'pourcent_liberation': f"{df_nettoye['%LIBERATION'][i] * 100:.2f}",
                     'residuel': format_nombre(df_nettoye["RESIDUEL"][i]),
                     'libelle_virement': 'CR ' + df_nettoye["SOUSCRIPTEUR"][i] + ' ADF ' + numero_call,
