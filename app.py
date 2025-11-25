@@ -122,7 +122,7 @@ if st.button("Générer les notices"):
                     'total_appele': total_appele,
                     'pourcent_liberation': f"{df_nettoye['%LIBERATION'][i] * 100:.2f}",
                     'residuel': format_nombre(df_nettoye["RESIDUEL"][i]),
-                    'libelle_virement': 'CR ' + df_nettoye["SOUSCRIPTEUR"][i] + ' ADF ' + numero_call,
+                    'libelle_virement': df_nettoye["SOUSCRIPTEUR"][i] + ' ADF ' + numero_call,
                     'iban': iban,
                     'bic': bic,
                 }
