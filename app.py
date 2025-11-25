@@ -108,7 +108,7 @@ if st.button("Générer les notices"):
                     'numero_call': numero_call,
                     'date_call': date_call,
                     'nom_fond': nom_fond,
-                    'montant_total': format_nombre(montant_total),
+                    'montant_total': total_appele,
                     # 'pourcentage_call': f"{pourcentage_call * 100:.2f}",
                     'pourcentage_call': pourcentage_call,
                     'montant_a_liberer': format_nombre(df_nettoye[call][i]),
