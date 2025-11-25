@@ -78,12 +78,14 @@ if st.button("Générer les notices"):
             env = Environment(loader=FileSystemLoader(dir))
             template = env.get_template('model_notice_img.html')
 
+            # --- Vider les dossiers avant de générer ---
             for folder in ["Output", "Output_HTML"]:
                 if os.path.exists(folder):
                     shutil.rmtree(folder)
+                os.makedirs(folder, exist_ok=True)
+            os.makedirs("Output/PDF", exist_ok=True)
+            os.makedirs("Output/Word", exist_ok=True)
 
-            os.makedirs('Output', exist_ok=True)
-            os.makedirs('Output_HTML', exist_ok=True)
 
             for i in range(df_nettoye.shape[0]):
                 # total_avant_call = df_nettoye['TOTAL APPELE'][i] - df_nettoye[call][i]
@@ -142,9 +144,6 @@ if st.button("Générer les notices"):
                     file.write(html_content)
 
                 # print('Notice HTML générée avec succès.')
-
-                os.makedirs('Output/PDF', exist_ok=True)
-                os.makedirs('Output/Word', exist_ok=True)
 
                 fichier_html = 'Output_HTML/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.html'
                 fichier_pdf = 'Output/PDF/' + str(date_title) + '_' + df_nettoye["SOUSCRIPTEUR"][i] + '_' + df_nettoye["PART"][i] + '.pdf'
