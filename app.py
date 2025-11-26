@@ -98,6 +98,7 @@ if st.button("Générer les notices"):
 
                 adresse = df_nettoye["ADRESSE"][i]
                 adresse = adresse.split(", " )
+                print(adresse)
 
                 # Les données à injecter
                 # 'balise' : 'la donnée',
