@@ -96,13 +96,17 @@ if st.button("Générer les notices"):
                 else:
                     representant = df_nettoye["Représentant"][i]
 
+                adresse = df_nettoye["ADRESSE"][i]
+                adresse = adresse.split(", " )
+
                 # Les données à injecter
                 # 'balise' : 'la donnée',
                 data = {
                     'souscripteur': df_nettoye["SOUSCRIPTEUR"][i],
                     # 'pm_pp': df_nettoye["TYPE"][i],
                     'representant': representant,
-                    'adresse': df_nettoye["ADRESSE"][i],
+                    'adresseun': adresse[0],
+                    'adressedeux': adresse[1],
                     'code_postal': str(df_nettoye["CP"][i]),
                     'ville': df_nettoye["VILLE"][i],
                     'pays': pays,
