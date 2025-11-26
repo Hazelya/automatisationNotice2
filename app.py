@@ -27,7 +27,9 @@ st.title("Générateur de notices d'appel de fonds")
 
 uploaded_file = st.file_uploader("Fichier Excel de données", type=["xlsx"])
 header = st.text_input("Première ligne (header)", value="3")
+print(header)
 header = int(header) - 1
+print(header)
 # texte_fond_couvrir = st.text_area("Texte pour couvrir l'appel")
 texte_fond_finance = st.text_area("Texte")
 
