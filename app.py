@@ -27,9 +27,7 @@ st.title("Générateur de notices d'appel de fonds")
 
 uploaded_file = st.file_uploader("Fichier Excel de données", type=["xlsx"])
 header = st.text_input("Première ligne (header)", value="3")
-print(header)
 header = int(header) - 1
-print(header)
 # texte_fond_couvrir = st.text_area("Texte pour couvrir l'appel")
 texte_fond_finance = st.text_area("Texte")
 
@@ -98,18 +96,13 @@ if st.button("Générer les notices"):
                 else:
                     representant = df_nettoye["Représentant"][i]
 
-                adresse = df_nettoye["ADRESSE"][i]
-                adresse = adresse.split(", " )
-                print(adresse)
-
                 # Les données à injecter
                 # 'balise' : 'la donnée',
                 data = {
                     'souscripteur': df_nettoye["SOUSCRIPTEUR"][i],
                     # 'pm_pp': df_nettoye["TYPE"][i],
                     'representant': representant,
-                    'adresseun': adresse[0],
-                    'adressedeux': adresse[1],
+                    'adresse': df_nettoye["ADRESSE"][i],
                     'code_postal': str(df_nettoye["CP"][i]),
                     'ville': df_nettoye["VILLE"][i],
                     'pays': pays,
