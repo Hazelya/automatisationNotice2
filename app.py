@@ -65,8 +65,8 @@ if st.button("Générer les notices"):
             df_temp = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=None)
 
             # Récupérer les deux premières cellules
-            iban = df_temp.iloc[0, 1]  # B1
-            bic = df_temp.iloc[1, 1]  # B2
+            iban = df_temp.iloc[1, 1]  # B1
+            bic = df_temp.iloc[0, 1]  # B2
 
             # df_CALL = pd.read_excel(chemin_fichier, sheet_name='SOUSCRIPTEURS', header=3) # ne sert plus
             call = 'CALL #' + numero_call
