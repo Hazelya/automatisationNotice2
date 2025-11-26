@@ -102,6 +102,7 @@ if st.button("Générer les notices"):
                 # Gestion si l'adresse n'a pas 2 parties
                 adresseun = adresse_split[0].strip() if len(adresse_split) > 0 else ''
                 adressedeux = adresse_split[1].strip() if len(adresse_split) > 1 else ''
+                adressetrois = adresse_split[2].strip() if len(adresse_split) > 2 else ''
 
 
                 # Les données à injecter
@@ -112,6 +113,7 @@ if st.button("Générer les notices"):
                     'representant': representant,
                     'adresseun': adresseun,
                     'adressedeux': adressedeux,
+                    'adressetrois': adressetrois,
                     'code_postal': str(df_nettoye["CP"][i]),
                     'ville': df_nettoye["VILLE"][i],
                     'pays': pays,
