@@ -30,6 +30,8 @@ header = st.text_input("Numéro de ligne de l'en-tête (temporaire)", value="3")
 header = int(header) - 1
 # texte_fond_couvrir = st.text_area("Texte pour couvrir l'appel")
 texte_fond_finance = st.text_area("Texte")
+texte_pred_appel = st.texte_area("Texte précédent appel")
+texte_nouvel_appel = st.texte_area("Texte nouvel appel")
 
 numero_call = st.text_input("Numéro de l'appel", value="9")
 
@@ -44,7 +46,7 @@ date_str_fr = f"{date_obj.day} {mois_fr[date_obj.month - 1]} {date_obj.year}"
 date_call = st.text_input("Date de l'appel", value="17/11/2025")
 pourcentage_call = st.text_input("Pourcentage de l'appel", value="10,50")
 pourcentage_avant_call = st.text_input("Pourcentage du précédent appel", value="87,00")
-total_appele = st.text_input("Total appelé", value="1 500,00")
+#total_appele = st.text_input("Total appelé", value="1 500,00")
 nom_fond = st.text_input("Nom du fonds", value="FPCI ÉPOPÉE Xplore II")
 pays = st.text_input("Pays", value="France")
 
@@ -121,18 +123,18 @@ if st.button("Générer les notices"):
                     'numero_call': numero_call,
                     'date_call': date_call,
                     'nom_fond': nom_fond,
-                    'montant_total': total_appele,
+                    'montant_total': format_nombre(df_nettoye["TOTAL APPELE"][i]),
                     # 'pourcentage_call': f"{pourcentage_call * 100:.2f}",
                     'pourcentage_call': pourcentage_call,
                     'montant_a_liberer': format_nombre(df_nettoye[call][i]),
                     'pourcentage_avant_call': pourcentage_avant_call,
                     # 'texte_fond_couvrir': texte_fond_couvrir,
-                    'texte_fond_finance': texte_fond_finance,
+                    'texte_pred_appele': texte_pred_appel, 
+                    'texte_nouvelle_appele': texte_nouvel_appel,
                     'montant_engagement_initial': format_nombre(df_nettoye["ENGAGEMENT"][i]),
                     'nombre_parts_souscrites': format_nombre(df_nettoye["NBR PARTS"][i]),
                     'categorie_part': df_nettoye["PART"][i],
-                    # 'total_appele': format_nombre(df_nettoye["TOTAL APPELE"][i]),
-                    'total_appele': total_appele,
+                    'total_appele': format_nombre(df_nettoye["TOTAL APPELE"][i]),
                     'pourcent_liberation': f"{df_nettoye['%LIBERATION'][i] * 100:.2f}",
                     'residuel': format_nombre(df_nettoye["RESIDUEL"][i]),
                     'libelle_virement': df_nettoye["SOUSCRIPTEUR"][i] + ' ADF ' + numero_call,
