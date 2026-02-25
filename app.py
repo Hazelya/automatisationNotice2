@@ -135,7 +135,7 @@ if st.button("Générer les notices"):
                     'nombre_parts_souscrites': format_nombre(df_nettoye["NBR PARTS"][i]),
                     'categorie_part': df_nettoye["PART"][i],
                     'total_appele': format_nombre(df_nettoye["TOTAL APPELE"][i]),
-                    'pourcent_liberation': format_nombre(f"{df_nettoye['%LIBERATION'][i] * 100:.2f}"),
+                    'pourcent_liberation': format_nombre(df_nettoye['%LIBERATION'][i] * 100),
                     'residuel': format_nombre(df_nettoye["RESIDUEL"][i]),
                     'libelle_virement': df_nettoye["SOUSCRIPTEUR"][i] + ' ADF ' + numero_call,
                     'iban': iban,
