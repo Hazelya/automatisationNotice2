@@ -29,9 +29,9 @@ uploaded_file = st.file_uploader("Fichier Excel de données", type=["xlsx"])
 header = st.text_input("Numéro de ligne de l'en-tête (temporaire)", value="3")
 header = int(header) - 1
 # texte_fond_couvrir = st.text_area("Texte pour couvrir l'appel")
-texte_fond_finance = st.text_area("Texte")
-texte_pred_appel = st.texte_area("Texte précédent appel")
-texte_nouvel_appel = st.texte_area("Texte nouvel appel")
+#texte_fond_finance = st.text_area("Texte")
+texte_pred_appel = st.text_area("Texte précédent appel")
+texte_nouvel_appel = st.text_area("Texte nouvel appel")
 
 numero_call = st.text_input("Numéro de l'appel", value="9")
 
