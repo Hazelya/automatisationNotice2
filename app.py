@@ -26,16 +26,16 @@ def format_nombre(nombre):
 st.title("Générateur de notices d'appel de fonds")
 
 uploaded_file = st.file_uploader("Fichier Excel de données", type=["xlsx"])
-header = st.text_input("Numéro de ligne de l'en-tête (temporaire)", value="4")
+header = st.text_input("Numéro de ligne de l'en-tête (temporaire)", value="3")
 header = int(header) - 1
 # texte_fond_couvrir = st.text_area("Texte pour couvrir l'appel")
 #texte_fond_finance = st.text_area("Texte")
 texte_pred_appel = st.text_area("Texte précédent appel")
 texte_nouvel_appel = st.text_area("Texte nouvel appel")
 
-numero_call = st.text_input("Numéro de l'appel", value="")
+numero_call = st.text_input("Numéro de l'appel", value="9")
 
-date = st.text_input("Date de l'envoi", value="")
+date = st.text_input("Date de l'envoi", value="30/11/2025")
 date_obj = dt.datetime.strptime(date, "%d/%m/%Y")
 mois_fr = [
     "janvier", "février", "mars", "avril", "mai", "juin",
@@ -43,12 +43,13 @@ mois_fr = [
 ]
 date_str_fr = f"{date_obj.day} {mois_fr[date_obj.month - 1]} {date_obj.year}"
 
+date_call = st.text_input("Date de l'appel", value="17/11/2025")
 montant_total = st.text_input("Montant total A+B", value="")
-pourcentage_call = st.text_input("Pourcentage de l'appel", value="")
-pourcentage_avant_call = st.text_input("Pourcentage du précédent appel", value="")
+pourcentage_call = st.text_input("Pourcentage de l'appel", value="10,50")
+pourcentage_avant_call = st.text_input("Pourcentage du précédent appel", value="87,00")
 #total_appele = st.text_input("Total appelé", value="1 500,00")
-nom_fond = st.text_input("Nom du fonds", value="")
-pays = st.text_input("Pays", value="")
+nom_fond = st.text_input("Nom du fonds", value="FPCI ÉPOPÉE Xplore II")
+pays = st.text_input("Pays", value="France")
 
 if st.button("Générer les notices"):
     if uploaded_file:
