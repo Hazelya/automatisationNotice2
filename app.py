@@ -43,7 +43,6 @@ mois_fr = [
 ]
 date_str_fr = f"{date_obj.day} {mois_fr[date_obj.month - 1]} {date_obj.year}"
 
-date_call = st.text_input("Date de l'appel", value="")
 montant_total = st.text_input("Montant total A+B", value="")
 pourcentage_call = st.text_input("Pourcentage de l'appel", value="")
 pourcentage_avant_call = st.text_input("Pourcentage du précédent appel", value="")
